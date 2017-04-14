@@ -1,0 +1,21 @@
+//* Cambio creditos del footer en Genesis
+//*esto va al final del function.php
+
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+add_action( 'genesis_footer', 'sp_custom_footer' );
+function sp_custom_footer() {
+	?>
+	<p>&copy;  2017  <a href="http:www.domain.com" target="_blank">domain</a>  </p>
+	<?php
+}
+
+
+//* Remover header solo en home theme Cafe
+
+add_action( 'get_header', 'angelo_remover_header_excluir_home' );
+function angelo_remover_header_excluir_home() {
+if( !is_home() ) {
+remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
+remove_action( 'genesis_header', 'genesis_do_header' );
+remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
+}}
